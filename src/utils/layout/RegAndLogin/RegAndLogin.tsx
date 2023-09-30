@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import SignInForm from "../../../components/groups/SignInForm";
-import LoginForm from "../../../groups/LoginForm/LoginForm";
+import SignInForm from "../../../components/groups/signInForm/SignInForm";
+import LoginForm from "../../../components/groups/LoginForm/LoginForm";
 function RegAndLogin() {
 	const [logIn, setLogIn] = useState(false);
 

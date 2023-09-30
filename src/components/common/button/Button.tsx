@@ -1,7 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { changeMode } from "../../../redux/loginmodeslice";
-
+import { changeMode } from "../../../redux/slices/loginmodeslice";
+import { Profiles } from "../../../constants/Mock";
+import UserService from "../../../api/services/Users";
+import ActionText from "./textButton/ActionText";
+import Container from "../../../utils/containers/Container/Container";
+import { Link } from "react-router-dom";
 interface Button {
 	text: string;
 	padding: string;
@@ -20,32 +24,49 @@ function Button({
 	onClick,
 	isClicked,
 }: Button) {
-	const logIn = useRef(true);
 	const dispatch = useAppDispatch();
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
+	const user = useAppSelector((state) => state.loginReducer.user);
+
+	const [auth, setAuth] = useState(false);
+	// const signIn = () => {
+	// 	setAuth(false)
+	// 	Profiles.map((us, k) => {
+	// 		if (user.username === us.name) setAuth(true);
+	// 	});
+	// 	if (auth) return true;
+	// 	else return false;
+	// };
+	// // <a href="/home" className={`hover:text-red-200`}>
 	return (
-		<div>
+		<Container>
 			{btn && (
-				<a href="#" className={` hover:text-red-200`}>
-					<button
-						className={`${color ?? "text-white hover:bg-red-700"} p-${
-							padding ?? "2"
-						} bg-${bgColor ?? "red-500"} border-none `}
-					>
+	
+				<button
+				className={`${color ?? "text-white hover:bg-red-700"} p-${
+					padding ?? "2"
+				} ${bgColor ?? "bg-red-500"} border-none `}
+				onClick={() => onClick()}
+				>
+						{/*temporary href (it should be dynamic)*/}
 						{text}
 					</button>
-				</a>
+					
+				// </a>
 			)}
 			{!btn && (
-				<a
-					href="#"
-					className={`${color} hover:text-red-600`}
-					onClick={() => dispatch(changeMode(!mode))}
+				<ActionText
+					color={`${color} hover:text-red-600`}
+					onClick={() => {
+						dispatch(changeMode(!mode));
+						UserService.getUser(user.username);
+
+					}}
 				>
 					{text}
-				</a>
+				</ActionText>
 			)}
-		</div>
+		</Container>
 	);
 }
 
