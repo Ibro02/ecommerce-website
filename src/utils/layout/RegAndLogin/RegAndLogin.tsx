@@ -5,9 +5,11 @@ function RegAndLogin() {
 	const [logIn, setLogIn] = useState(false);
 
 	return (
-		<div className="ease-in duration-500">
+		<div className="">
+	
 			<SignInForm />
 			<LoginForm />
+	
 		</div>
 	);
 }

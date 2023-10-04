@@ -7,11 +7,14 @@ function SignInForm() {
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
 	useEffect(() => {
 		console.log(mode);
+
 	}, [mode]);
 	return (
+		<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+{/**@TODO - make animation via js/ts with display: hidden*/}
 		<div
-			className={`${mode ? "" : "hidden"} p-10 rounded-lg flex-column bg-blur`}
-		>
+			className={`${mode ? "" : "opacity-0 p-0 translate-x-1/4 translate-y-1/4 rounded-none z-0"} z-20 p-10 rounded-lg flex-column bg-blur ease-in duration-1000`}
+			>
 			<h1 className="text-slate-200">Create Account</h1>
 
 			<div className="flex">
@@ -39,7 +42,7 @@ function SignInForm() {
 						title="Confirm password"
 						disabled={false}
 						placeholder="Comfirm Password"
-					/>
+						/>
 				</Container>
 			</div>
 			<div className="flex-row">
@@ -49,9 +52,10 @@ function SignInForm() {
 					text="You have an account?"
 					color={"text-red-400"}
 					btn={false}
-				/>
+					/>
 			</div>
 		</div>
+					</div>
 	);
 }
 

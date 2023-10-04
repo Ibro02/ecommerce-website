@@ -29,10 +29,11 @@ function LogInForm() {
 		return auth;
 	};
 	return (
+		
 		<div
 			className={`${
-				!mode ? "" : "hidden"
-			}  duration-100 p-10 rounded-lg flex-column bg-blur`}
+				!mode ? "" : "opacity-0 hidden"
+			} p-10 rounded-lg flex-column bg-blur ease-in duration-100`}
 		>
 			<h1 className="text-slate-200">Sign In</h1>
 			<div className="flex">
