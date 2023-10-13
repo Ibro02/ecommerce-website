@@ -13,7 +13,6 @@ function LogInForm() {
 	const [auth, setAuth] = useState<boolean>(false);
 	const navigate = useNavigate();
 	const signIn = async () => {
-		UserService.getUser(user.username);
 		const loggedUser = await UserService.getUser(user.username);
 		console.log(loggedUser);
 		if (!loggedUser) navigate("/");
@@ -29,7 +28,6 @@ function LogInForm() {
 		return auth;
 	};
 	return (
-		
 		<div
 			className={`${
 				!mode ? "" : "opacity-0 hidden"

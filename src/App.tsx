@@ -5,12 +5,9 @@ import LoginBackground from "./assets/LoginBackground";
 import { useAppDispatch } from "./redux/store";
 import { changeMode } from "./redux/slices/loginmodeslice";
 
-
 function App() {
 	const [count, setCount] = useState(0);
 	const dispatch = useAppDispatch();
-
-
 
 	return (
 		<>

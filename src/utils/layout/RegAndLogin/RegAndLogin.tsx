@@ -6,10 +6,8 @@ function RegAndLogin() {
 
 	return (
 		<div className="">
-	
 			<SignInForm />
 			<LoginForm />
-	
 		</div>
 	);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Container({
-	children, 
+	children,
 }: React.DetailedHTMLProps<
 	React.HTMLAttributes<HTMLDivElement>,
 	HTMLDivElement

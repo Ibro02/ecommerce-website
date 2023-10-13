@@ -2,11 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { store } from "../store";
 
 export interface Login {
-	user:{username: string, password: string}
+	user: { username: string; password: string };
 }
 const initialState: Login = {
-	user: {username: '',
-           password: ''}
+	user: { username: "", password: "" },
 };
 export const LoginSlice = createSlice({
 	name: "login",
@@ -15,14 +14,14 @@ export const LoginSlice = createSlice({
 		getLogInfo: (state, action) => {
 			state.user = action.payload;
 		},
-        getUsername: (state, action) => {
+		getUsername: (state, action) => {
 			state.user.username = action.payload;
 		},
-        getPassword: (state, action) => {
+		getPassword: (state, action) => {
 			state.user.password = action.payload;
 		},
 	},
 });
 export type RootState = ReturnType<typeof store.getState>;
 export default LoginSlice.reducer;
-export const { getLogInfo, getPassword,getUsername } = LoginSlice.actions;
+export const { getLogInfo, getPassword, getUsername } = LoginSlice.actions;
