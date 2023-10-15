@@ -16,7 +16,7 @@ function SignInForm() {
 					mode
 						? ""
 						: "opacity-0 p-0 translate-x-1/4 translate-y-1/4 rounded-none z-0"
-				} z-20 p-10 rounded-lg flex-column bg-blur ease-in duration-500`}
+				} z-20 p-10 flex-column bg-blur ease-in duration-500`}
 			>
 				<h1 className="text-slate-200">Create Account</h1>
 

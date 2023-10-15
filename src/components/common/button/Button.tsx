@@ -43,7 +43,7 @@ function Button({
 			{btn && (
 	
 				<button
-				className={`${color ?? "text-white hover:bg-red-700"} p-${
+				className={`${color ?? "text-white my-3 hover:bg-red-700"} p-${
 					padding ?? "2"
 				} ${bgColor ?? "bg-red-500"} border-none `}
 				onClick={() => onClick()}
