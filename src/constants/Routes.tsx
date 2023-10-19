@@ -5,6 +5,6 @@ import App from "../App";
 import { useAppSelector } from "../redux/store";
 const user = useAppSelector((state) => state.loginReducer.user);
 export const router = createBrowserRouter([
-	{ path: "/home*", element: <HomePage user={user} /> },
+	{ path: "/home*", element: <HomePage /> },
 	{ path: "", element: <App /> },
 ]);

@@ -6,14 +6,15 @@ import UserService from "../../../api/services/Users";
 import ActionText from "./textButton/ActionText";
 import Container from "../../../utils/containers/Container/Container";
 import { Link } from "react-router-dom";
+import LoginService from "../../../api/services/Login";
 interface Button {
 	text: string;
-	padding: string;
-	bgColor: string;
+	padding?: string;
+	bgColor?: string;
 	btn: boolean;
-	color: string;
-	onClick: Function;
-	isClicked: boolean;
+	color?: string;
+	onClick?: Function;
+	isClicked?: boolean;
 }
 function Button({
 	btn,
@@ -59,7 +60,7 @@ function Button({
 					color={`${color} hover:text-red-600`}
 					onClick={() => {
 						dispatch(changeMode(!mode));
-						UserService.getUser(user.username);
+						LoginService.login(user.username, user.password);
 
 					}}
 				>

@@ -1,12 +1,13 @@
 import React from "react";
 
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+	className?: string;
+  }
 function Container({
-	children,
-}: React.DetailedHTMLProps<
-	React.HTMLAttributes<HTMLDivElement>,
-	HTMLDivElement
->) {
-	return <div>{children}</div>;
+	children, className
+}: ContainerProps
+) {
+	return <div className={className}>{children}</div>;
 }
 
 export default Container;

@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from "react";
 import SignInput from "../../groups/SignInput/SignInput";
 import Button from "../../common/button/Button";
-import { useAppSelector } from "../../../redux/store";
+import { useAppSelector, useAppDispatch } from "../../../redux/store";
 import { Profiles } from "../../../constants/Mock";
 import UserService from "../../../api/services/Users";
 import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { getUsername } from "../../../redux/slices/loginSlice";
+import userSlice, { getUserInfo } from "../../../redux/slices/userSlice";
 
 function LogInForm() {
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
-	const user = useAppSelector((state) => state.loginReducer.user);
+	const logInfo = useAppSelector((state) => state.loginReducer.user);
+	const user = useAppSelector((state)=>state.userReducer)
 	const [auth, setAuth] = useState<boolean>(false);
 	const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+	useEffect(()=>
+	{
+		signIn();
+	},[user])
 	const signIn = async () => {
-		const loggedUser = await UserService.getUser(user.username);
+		const loggedUser = await UserService.getUser(logInfo.username, logInfo.password);
 		console.log(loggedUser);
+		
 		if (!loggedUser) navigate("/");
 		else {
+			console.log(user)
 			navigate("/home");
+			dispatch(getUserInfo(loggedUser.data));
 		}
 		// 		console.log(user)
 		// 		Profiles.map((us, k) => {
@@ -36,8 +47,8 @@ function LogInForm() {
 			<h1 className="text-slate-200">Sign In</h1>
 			<div className="flex">
 				<div>
-					<SignInput title="username" disabled={false} placeholder="Username" />
-					<SignInput title="password" disabled={false} placeholder="Password" />
+					<SignInput type="text" title="username" disabled={false} placeholder="Username" />
+					<SignInput type="password" title="password" disabled={false} placeholder="Password" />
 				</div>
 			</div>
 			<div className="flex-row">
