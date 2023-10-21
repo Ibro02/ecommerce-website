@@ -13,7 +13,7 @@ interface Button {
 	bgColor?: string;
 	btn: boolean;
 	color?: string;
-	onClick?: Function;
+	onClick?: Function | undefined;
 	isClicked?: boolean;
 }
 function Button({
@@ -42,17 +42,16 @@ function Button({
 	return (
 		<Container>
 			{btn && (
-	
 				<button
-				className={`${color ?? "text-white my-3 hover:bg-red-700"} p-${
-					padding ?? "2"
-				} ${bgColor ?? "bg-red-500"} border-none `}
-				onClick={() => onClick()}
+					className={`${color ?? "text-white my-3 hover:bg-red-700"} p-${
+						padding ?? "2"
+					} ${bgColor ?? "bg-red-500"} border-none `}
+					onClick={() => onClick()}
 				>
-						{/*temporary href (it should be dynamic)*/}
-						{text}
-					</button>
-					
+					{/*temporary href (it should be dynamic)*/}
+					{text}
+				</button>
+
 				// </a>
 			)}
 			{!btn && (
@@ -61,7 +60,6 @@ function Button({
 					onClick={() => {
 						dispatch(changeMode(!mode));
 						LoginService.login(user.username, user.password);
-
 					}}
 				>
 					{text}

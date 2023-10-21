@@ -25,7 +25,27 @@
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(11.7px);
 	-webkit-backdrop-filter: blur(11.7px);
-	border: 1px solid rgba(255, 255, 255, 0.139);
+
+}
+
+.bg-blur-white {
+	background-size: cover;
+	margin: auto;
+	/* From https://css.glass */
+	background: rgba(255, 255, 255, 0.374);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(11.7px);
+	-webkit-backdrop-filter: blur(11.7px);
+
+}
+
+.bg-login
+{
+	background-image: url("./assets/loginimage.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	bottom: 0;
+
 }
 
 :root {
