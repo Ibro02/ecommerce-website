@@ -20,7 +20,7 @@ function SignInput({ title, placeholder, disabled,type,atribute}: SignInfo): JSX
 	const obj = useAppSelector((state) => state.loginReducer.user);
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		//console.log(value);
+		////console.log(value);
 		if (title === "username") dispatch(getUsername(value));
 		else if (title === "password")dispatch(getPassword(value));
 	    else if (title === "Name") atribute = value;

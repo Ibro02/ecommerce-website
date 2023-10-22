@@ -8,12 +8,12 @@ function RegAndLogin() {
 
 	return (
 
-		<Container className="flex w-full">
-			<Container className="mr-56">
+		<Container className="flex">
+			<Container className="md:mr-72 w-full mx-auto">
 			<SignInForm />
 			<LoginForm />
 			</Container>
-			<Container className="relative ">
+			<Container className="flex ml-auto">
 			<Hero/>
 			</Container>
 		</Container>

@@ -13,12 +13,12 @@ const LoginService = {
 			password: loggedPassword,
 		};
 	
-		console.log(profile);
+		//console.log(profile);
 		const token =await axios.post(`https://localhost:${port}/api/Login`, profile);
         if (token.data.length > 0)
 		{
 		 window.localStorage.setItem("token", token.data);
-	console.log(localStorage);
+	    //console.log(localStorage);
 		}
 		return token;
 	},

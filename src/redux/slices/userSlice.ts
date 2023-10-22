@@ -9,7 +9,7 @@ const initialState =
 {
     user:
     {
-        username: "NoName", password: "", cityId: 1, description: "", email: "", firstName: "", id: null, lastName: "", roleId: 2
+        username: localStorage.loggedUsername, password: localStorage.loggedPassword, cityId: 1, description: "", email: "", firstName: "", id: null, lastName: "", roleId: 2
     }
 }
 

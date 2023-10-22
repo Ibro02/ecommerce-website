@@ -3,13 +3,15 @@ import Container from "../../../utils/containers/Container/Container";
 
 function Hero() {
 	return (
-		<Container className="bg-blur-white fixed top-0 right-0 h-screen w-1/3 text-gray-100">
+		<Container className="bg-blur-white md:absolute hidden md:block top-0 right-0 h-screen w-1/3 text-gray-100 ml-auto">
 			<Container className="flex-column">
-				<Container className="m-auto">
-					<h1 className="mt-5">
-						<span className="text-red-700 font-bold drop-shadow-lg">e</span> Commerce
+				<Container className="resize">
+			
+					<h1 className="md:text-3xl lg:text-5xl">
+					<span className="text-red-700 font-bold drop-shadow-2xl text-4xl">e</span>Commerce
 					</h1>
-					<p className="text-justify m-10 text-xl">
+				
+					<p className="text-justify md:m-3 text-md lg:m-8 lg:text-lg box-border">
 						Welcome to <span className="text-red-700 font-bold">e</span>
 						commerce shop Discover a world of endless possibilities right at
 						your fingertips. We're delighted to have you here at{" "}
@@ -21,7 +23,7 @@ function Hero() {
 						your online shopping experience is nothing short of perfect.{" "}
 					</p>
 				</Container>
-				<Container className={" h-screen bg-login"}></Container>
+				<Container className={"bg-login h-screen md:p-28 lg:p-36"}></Container>
 			</Container>
 		</Container>
 	);

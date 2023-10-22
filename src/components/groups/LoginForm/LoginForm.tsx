@@ -21,25 +21,29 @@ function LogInForm() {
 		signIn();
 	}, [user]);
 	const signIn = async () => {
+		//console.log(logInfo.password);
 		localStorage.setItem("loggedUsername", logInfo.username);
 		localStorage.setItem("loggedPassword", logInfo.password);
 		const loggedUser = await UserService.getUser(
-			logInfo.username,
-			logInfo.password
-		);
-		console.log(loggedUser);
+			localStorage.loggedUsername,
+			localStorage.loggedPassword
+			);
 
-		if (!loggedUser) navigate("/");
+		if (!loggedUser) {
+			navigate("/")
+			alert("Incorrect password or username! Try again!")
+
+		}
 		else {
-			console.log(user);
+			//console.log(user);
 			navigate("/home");
 			dispatch(getUserInfo(loggedUser.data));
 		}
-		// 		console.log(user)
+		// 		//console.log(user)
 		// 		Profiles.map((us, k) => {
 		// 			if (user.username === us.name) {setAuth(true)};
-		// 			console.log(us.name)
-		//    console.log(user.username)
+		// 			//console.log(us.name)
+		//    //console.log(user.username)
 		// 		});
 		return auth;
 	};

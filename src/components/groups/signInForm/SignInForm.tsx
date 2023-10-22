@@ -8,6 +8,7 @@ import UserService from "../../../api/services/Users";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../../../redux/slices/userSlice";
 import { all } from "axios";
+import LoginService from "../../../api/services/Login";
 
 function SignInForm() {
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
@@ -55,17 +56,17 @@ function SignInForm() {
 		newUser.current.email = email;
 		newUser.current.username = username;
 		newUser.current.password = password;
-		console.log(newUser);
+		//console.log(newUser);
 	}, [firstName, lastName, email, username, password]);
 
 	const register = async () => {
 		const email = newUser.current.email.split("@");
 		const allUsernames: Array<string> = await UserService.getAllUsernames();
 		var isUnique = true;
-		console.log(allUsernames);
+		//console.log(allUsernames);
 		allUsernames.forEach((username) => {
 			if (username === newUser.current.username) isUnique = false;
-			console.log(username);
+			//console.log(username);
 		});
 
 		if (newUser.current.firstName.length > 3)
@@ -76,8 +77,14 @@ function SignInForm() {
 							if (newUser.current.password === comfirmedPassword)
 								if (email.length == 2) {
 									UserService.postUser(newUser.current);
+									
+								//	window.localStorage.clear();
+								    //@todo - after register, it should recognize you at /home
+									//UserService.getUserWithToken();
+									UserService.getUser(newUser.current.username, newUser.current.password);
 									navigator("/home");
 									dispatch(getUserInfo(newUser.current));
+									//console.log(newUser.current.firstName)
 								} else {
 									alert("Email is incorrect! Try again!");
 									setEmailError(true);
@@ -109,13 +116,13 @@ function SignInForm() {
 	};
 
 	return (
-		<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+		<div className="md:absolute top-1/2 left-1/2 md:-translate-x-3/4 md:-translate-y-1/2 z-0">
 			{/**@TODO - make animation via js/ts with display: hidden*/}
 			<div
 				className={`${
 					mode
 						? ""
-						: "opacity-0 p-0 translate-x-1/4 translate-y-1/4 rounded-none z-0"
+						: "md:block md:opacity-0 hidden p-0 md:translate-x-1/4 md:translate-y-1/4 rounded-none z-0"
 				} z-20 p-10 flex-column bg-blur ease-in duration-500`}
 			>
 				<h1 className="text-slate-200">Create Account</h1>
