@@ -9,7 +9,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
 	(config:any) => {
 		config.headers = {
-			"Authorization": `Bearer ${localStorage.token}`,
+			"Authorization": `Bearer ${sessionStorage.token}`,
 		};
 		return config;
 	},
@@ -18,6 +18,6 @@ instance.interceptors.request.use(
 	}
 );
 export const headers = {
-	Authorization: `Bearer ${localStorage.token}`,
+	Authorization: `Bearer ${sessionStorage.token}`,
   };
 export default instance;

@@ -21,23 +21,23 @@
 // }
 
 // export default HomePage;
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import UserService from "../../api/services/Users";
 import { getUserInfo } from "../../redux/slices/userSlice";
-import LoginService from "../../api/services/Login";
+
 function HomePage() {
 	const user = useAppSelector((state) => state.userReducer.user);
 	const dispatch = useAppDispatch();
   
 	const getData = async () => {
-	  let log = await UserService.getUser(localStorage.loggedUsername, localStorage.loggedPassword);
-	  dispatch(getUserInfo(log.data));
+		let log = await UserService.getUser(localStorage.loggedUsername, localStorage.loggedPassword);
+      	dispatch(getUserInfo(log.data));
 	}
-  
+	
 	useEffect(() => {
-	  // Define an async function and call it inside the useEffect
-	  const fetchData = async () => {
+		// Define an async function and call it inside the useEffect
+		const fetchData = async () => {
 		console.log("Fetching data...");
 		await getData();
 

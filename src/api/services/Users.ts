@@ -12,7 +12,6 @@ const UserService = {
 			loggedUsername,
 			loggedPassword
 		);
-
 		//@todo - make this auth like in zendev's project
 		const users = await axios.get(`https://localhost:${port}/api/User`, config);
 		let id;
@@ -55,6 +54,10 @@ const UserService = {
 		try {
 			const { data } = await axios.post(url, newUser);
 			// //console.log(data)
+			await UserService.getUser(data.username,data.password);
+			localStorage.setItem("loggedUsername", data.username)
+			localStorage.setItem("loggedPassword", data.password)
+			localStorage.setItem("userId", data.id)
 			return data;
 		} catch (error) {
 			alert(error);

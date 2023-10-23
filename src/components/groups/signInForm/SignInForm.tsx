@@ -7,8 +7,8 @@ import Input from "../../common/input/Input";
 import UserService from "../../../api/services/Users";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../../../redux/slices/userSlice";
-import { all } from "axios";
 import LoginService from "../../../api/services/Login";
+
 
 function SignInForm() {
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
@@ -60,6 +60,9 @@ function SignInForm() {
 	}, [firstName, lastName, email, username, password]);
 
 	const register = async () => {
+		localStorage.setItem("loggedUsername", newUser.current.username);
+		localStorage.setItem("loggedPassword", newUser.current.password);
+
 		const email = newUser.current.email.split("@");
 		const allUsernames: Array<string> = await UserService.getAllUsernames();
 		var isUnique = true;
@@ -76,13 +79,15 @@ function SignInForm() {
 						if (newUser.current.password.length > 6)
 							if (newUser.current.password === comfirmedPassword)
 								if (email.length == 2) {
+
+     
 									UserService.postUser(newUser.current);
-									
-								//	window.localStorage.clear();
+									navigator("/home");
+									await UserService.getUser(localStorage.loggedUsername, localStorage.loggedPassword);	
+									//LoginService.login(localStorage.loggedUsername, localStorage.loggedPassword)
+
 								    //@todo - after register, it should recognize you at /home
 									//UserService.getUserWithToken();
-									UserService.getUser(newUser.current.username, newUser.current.password);
-									navigator("/home");
 									dispatch(getUserInfo(newUser.current));
 									//console.log(newUser.current.firstName)
 								} else {

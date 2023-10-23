@@ -36,8 +36,8 @@ function LogInForm() {
 		}
 		else {
 			//console.log(user);
-			navigate("/home");
 			dispatch(getUserInfo(loggedUser.data));
+			navigate("/home");
 		}
 		// 		//console.log(user)
 		// 		Profiles.map((us, k) => {
