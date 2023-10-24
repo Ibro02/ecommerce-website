@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import UserService from "../../api/services/Users";
 import { getUserInfo } from "../../redux/slices/userSlice";
 import Navbar from "../../components/groups/navbar/Navbar";
+import { Outlet } from "react-router-dom";
 
 function HomePage() {
 	const user = useAppSelector((state) => state.userReducer.user);
@@ -27,6 +28,7 @@ function HomePage() {
 		<Fragment>
 			<Navbar />
 			<div className="bg-svg"></div>
+			<Outlet/>
 		</Fragment>
 	);
 }

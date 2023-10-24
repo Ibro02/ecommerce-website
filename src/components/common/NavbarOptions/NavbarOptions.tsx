@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { NavbarRoutes } from "../../../constants/Mock";
 
 export default function NavbarOptions() {
+	const token = localStorage.token;
 	return (
 		<ul className="flex gap-10 my-auto mx-5">
 			{NavbarRoutes.map((route, key) => {
@@ -23,7 +24,7 @@ export default function NavbarOptions() {
 							<Link
 								to={route.path}
 								className="text-slate-600 hover:text-red-500 transition-all"
-								onClick={() => window.localStorage.removeItem("token")}
+								onClick={() => window.localStorage.clear()}
 							>
 								{route.name}
 							</Link>

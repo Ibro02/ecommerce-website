@@ -5,12 +5,12 @@ import "./index.css";
 import { Provider } from "react-redux/es/exports";
 import { store } from "./redux/store.ts";
 import HomePage from "./pages/HomePage/HomePage.tsx";
-import { RouterProvider } from "react-router-dom";
+import { Navigate, RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { useAppSelector } from "./redux/store.ts";
 
 export const router = createBrowserRouter([
-	{ path: "home/*", element: <HomePage /> },
+	{ path: "home/*", element: localStorage.token?<HomePage />:<Navigate to={'/'}/>,errorElement:<h1>404</h1>},
 	{ path: "", element: <App /> },
 
 ]);

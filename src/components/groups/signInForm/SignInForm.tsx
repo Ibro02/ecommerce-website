@@ -57,6 +57,7 @@ function SignInForm() {
 	}, [firstName, lastName, email, username, password]);
 
 	const register = async () => {
+        window.localStorage.removeItem("token")
 		localStorage.setItem("loggedUsername", newUser.current.username);
 		localStorage.setItem("loggedPassword", newUser.current.password);
 
