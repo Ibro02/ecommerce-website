@@ -17,78 +17,67 @@ function LogInForm() {
 	const [auth, setAuth] = useState<boolean>(false);
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	useEffect(() => {
-		signIn();
-	}, [user]);
+
 	const signIn = async () => {
-		//console.log(logInfo.password);
 		localStorage.setItem("loggedUsername", logInfo.username);
 		localStorage.setItem("loggedPassword", logInfo.password);
 		const loggedUser = await UserService.getUser(
 			localStorage.loggedUsername,
 			localStorage.loggedPassword
-			);
+		);
 
 		if (!loggedUser) {
-			navigate("/")
-			alert("Incorrect password or username! Try again!")
-
-		}
-		else {
-			//console.log(user);
+			navigate("/");
+			alert("Incorrect password or username! Try again!");
+		} else {
 			dispatch(getUserInfo(loggedUser.data));
 			navigate("/home");
 		}
-		// 		//console.log(user)
-		// 		Profiles.map((us, k) => {
-		// 			if (user.username === us.name) {setAuth(true)};
-		// 			//console.log(us.name)
-		//    //console.log(user.username)
-		// 		});
+
 		return auth;
 	};
 	return (
 		<Container className="flex">
-		<div
-			className={`${
-				!mode ? "" : "opacity-0 hidden"
-			} p-10 rounded-lg flex-column bg-blur ease-in duration-100`}
+			<div
+				className={`${
+					!mode ? "" : "opacity-0 hidden"
+				} p-10 rounded-lg flex-column bg-blur ease-in duration-100`}
 			>
-			<h1 className="text-slate-200">Sign In</h1>
-			<div className="flex">
-				<div>
-					<SignInput
-						type="text"
-						title="username"
-						disabled={false}
-						placeholder="Username"
+				<h1 className="text-slate-200">Sign In</h1>
+				<div className="flex">
+					<div>
+						<SignInput
+							type="text"
+							title="username"
+							disabled={false}
+							placeholder="Username"
 						/>
-					<SignInput
-						type="password"
-						title="password"
-						disabled={false}
-						placeholder="Password"
+						<SignInput
+							type="password"
+							title="password"
+							disabled={false}
+							placeholder="Password"
 						/>
+					</div>
 				</div>
-			</div>
-			<div className="flex-row">
-				<Button
-					text="Sign In!"
-					btn={true}
-					padding="4"
-					onClick={() => {
-						signIn();
-					}}
+				<div className="flex-row">
+					<Button
+						text="Sign In!"
+						btn={true}
+						padding="4"
+						onClick={() => {
+							signIn();
+						}}
 					/>
 
-				<Button
-					text="You do not have account?"
-					color={"text-red-400"}
-					btn={false}
+					<Button
+						text="You do not have account?"
+						color={"text-red-400"}
+						btn={false}
 					/>
+				</div>
 			</div>
-		</div>
-					</Container>
+		</Container>
 	);
 }
 

@@ -7,8 +7,6 @@ import Input from "../../common/input/Input";
 import UserService from "../../../api/services/Users";
 import { useNavigate } from "react-router-dom";
 import { getUserInfo } from "../../../redux/slices/userSlice";
-import LoginService from "../../../api/services/Login";
-
 
 function SignInForm() {
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
@@ -56,7 +54,6 @@ function SignInForm() {
 		newUser.current.email = email;
 		newUser.current.username = username;
 		newUser.current.password = password;
-		//console.log(newUser);
 	}, [firstName, lastName, email, username, password]);
 
 	const register = async () => {
@@ -66,10 +63,9 @@ function SignInForm() {
 		const email = newUser.current.email.split("@");
 		const allUsernames: Array<string> = await UserService.getAllUsernames();
 		var isUnique = true;
-		//console.log(allUsernames);
 		allUsernames.forEach((username) => {
 			if (username === newUser.current.username) isUnique = false;
-			//console.log(username);
+		
 		});
 
 		if (newUser.current.firstName.length > 3)
@@ -79,17 +75,13 @@ function SignInForm() {
 						if (newUser.current.password.length > 6)
 							if (newUser.current.password === comfirmedPassword)
 								if (email.length == 2) {
-
-     
 									UserService.postUser(newUser.current);
 									navigator("/home");
-									await UserService.getUser(localStorage.loggedUsername, localStorage.loggedPassword);	
-									//LoginService.login(localStorage.loggedUsername, localStorage.loggedPassword)
-
-								    //@todo - after register, it should recognize you at /home
-									//UserService.getUserWithToken();
+									await UserService.getUser(
+										localStorage.loggedUsername,
+										localStorage.loggedPassword
+									);
 									dispatch(getUserInfo(newUser.current));
-									//console.log(newUser.current.firstName)
 								} else {
 									alert("Email is incorrect! Try again!");
 									setEmailError(true);

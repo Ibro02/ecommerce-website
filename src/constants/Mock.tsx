@@ -1,5 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage";
+
 export const Profiles = [
 	{
 		name: "Ibrahim",
@@ -27,3 +26,11 @@ export const Profiles = [
 	},
 ];
 
+export const NavbarRoutes = 
+[
+	{name: "Home", path:"/home"},
+	{name: "Categories", path:"/home"/**CategoriesPage */},
+	{name: "Sell", path:"/home"/**NewSalePage */},
+	{name: "Profile", path:"/"/**ProfilePage */} //#-> for now, Profile button is sing out button
+
+]

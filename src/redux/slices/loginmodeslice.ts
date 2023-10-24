@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { store } from "../store";
-import { PayloadAction } from "@reduxjs/toolkit";
 export interface Mode {
 	logIn: boolean;
 }

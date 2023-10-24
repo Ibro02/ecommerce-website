@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+
 import Container from "../../../utils/containers/Container/Container";
 
 function Hero() {

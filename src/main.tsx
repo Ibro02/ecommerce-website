@@ -10,14 +10,15 @@ import { createBrowserRouter } from "react-router-dom";
 import { useAppSelector } from "./redux/store.ts";
 
 export const router = createBrowserRouter([
-	{ path: "/home/*", element: <HomePage /> },
+	{ path: "home/*", element: <HomePage /> },
 	{ path: "", element: <App /> },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<RouterProvider router={router}>
+			<RouterProvider router={router} fallbackElement={<h1>Haha</h1>}>
 				<App />
 			</RouterProvider>
 		</Provider>

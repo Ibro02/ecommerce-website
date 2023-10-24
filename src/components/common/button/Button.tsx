@@ -29,16 +29,7 @@ function Button({
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
 	const user = useAppSelector((state) => state.loginReducer.user);
 
-	const [auth, setAuth] = useState(false);
-	// const signIn = () => {
-	// 	setAuth(false)
-	// 	Profiles.map((us, k) => {
-	// 		if (user.username === us.name) setAuth(true);
-	// 	});
-	// 	if (auth) return true;
-	// 	else return false;
-	// };
-	// // <a href="/home" className={`hover:text-red-200`}>
+
 	return (
 		<Container>
 			{btn && (

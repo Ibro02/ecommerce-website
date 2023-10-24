@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import SignInForm from "../../../components/groups/signInForm/SignInForm";
 import LoginForm from "../../../components/groups/LoginForm/LoginForm";
 import Container from "../../containers/Container/Container";
@@ -7,17 +7,15 @@ function RegAndLogin() {
 	const [logIn, setLogIn] = useState(false);
 
 	return (
-
 		<Container className="flex">
 			<Container className="md:mr-72 w-full mx-auto">
-			<SignInForm />
-			<LoginForm />
+				<SignInForm />
+				<LoginForm />
 			</Container>
 			<Container className="flex ml-auto">
-			<Hero/>
+				<Hero />
 			</Container>
 		</Container>
-
 	);
 }
 
