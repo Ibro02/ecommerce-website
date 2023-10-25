@@ -1,7 +1,5 @@
-interface IFlex {
-	children?: JSX.Element | React.HTMLAttributes<HTMLDivElement>;
-}
-function Flex({ children }: IFlex) {
+
+function Flex({ children }: React.HTMLAttributes<HTMLDivElement>) {
 	return <div className="flex">{children}</div>;
 }
 

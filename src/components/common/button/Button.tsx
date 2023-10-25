@@ -27,7 +27,6 @@ function Button({
 }: Button) {
 	const dispatch = useAppDispatch();
 	const mode = useAppSelector((state) => state.modeReducer.logIn);
-	const user = useAppSelector((state) => state.loginReducer.user);
 
 
 	return (
@@ -50,7 +49,6 @@ function Button({
 					color={`${color} hover:text-red-600`}
 					onClick={() => {
 						dispatch(changeMode(!mode));
-						LoginService.login(user.username, user.password);
 					}}
 				>
 					{text}

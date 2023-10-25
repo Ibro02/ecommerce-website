@@ -1,7 +1,7 @@
 import React from "react";
 
 interface IActionText {
-	color: string;
+	color?: string;
 	onClick: Function;
 	children: string;
 }
@@ -9,7 +9,7 @@ interface IActionText {
 function ActionText({ color, onClick, children }: IActionText) {
 	return (
 		<a
-			href="#"
+			//href="#"
 			className={color}
 			onClick={() => {
 				onClick();

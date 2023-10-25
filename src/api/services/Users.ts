@@ -1,19 +1,20 @@
 import axios from "axios";
 import LoginService from "./Login";
 import { headers } from "../https";
-
+import api from "../https";
 const config = {
 	headers: { Authorization: `Bearer ${localStorage.token}` },
 };
-const port = "44369";
+export const port = "44369";
 const UserService = {
 	getUser: async (loggedUsername: string, loggedPassword: string) => {
+		
 		await LoginService.login(
 			loggedUsername,
 			loggedPassword
 		);
 		//@todo - make this auth like in zendev's project
-		const users = await axios.get(`https://localhost:${port}/api/User`, config);
+		const users = await api.get(`/User`);
 		let id;
 		for (let i = 0; i < users.data.length; i++) {
 			let loggedUser;
@@ -23,30 +24,29 @@ const UserService = {
 			}
 		}
 		localStorage.setItem("userId", id);
-		const data = axios.get(
-			`https://localhost:${port}/api/User/Get/${localStorage.userId}`,
-			config
+		const data = api.get(
+			`/User/Get/${localStorage.userId}`
 		);
 		return data;
 	},
 	getUserWithToken: async () => {
-		const data = axios.get(
-			`https://localhost:${port}/api/User/Get/${localStorage.userId}`,
-			config
+		const data = api.get(
+			`/User/Get/${localStorage.userId}`
+			
 		);
 		return data;
 	},
 	getAllUsers: async () => {
-		const url = `https://localhost:${port}/api/User/Get/${localStorage.userId}`;
+		const url = `/User/Get/${localStorage.userId}`;
 
-		const { data } = await axios.get(url, config);
+		const { data } = await api.get(url);
 
 		return data;
 	},
 	postUser: async (newUser: object) => {
-		const url = `https://localhost:${port}/api/User/Post`;
+		const url = `/User/Post`;
 		try {
-			const { data } = await axios.post(url, newUser);
+			const { data } = await api.post(url, newUser);
 			// //console.log(data)
 			await UserService.getUser(data.username,data.password);
 			localStorage.setItem("loggedUsername", data.username)
@@ -58,10 +58,10 @@ const UserService = {
 		}
 	},
 	getAllUsernames: async () => {
-		const url = `https://localhost:${port}/api/User/GetAllUsernames`;
+		const url = `/User/GetAllUsernames`;
 
 		try {
-			const { data } = await axios.get(url, { headers });
+			const { data } = await api.get(url, { headers });
 
 			return data;
 		} catch (error) {

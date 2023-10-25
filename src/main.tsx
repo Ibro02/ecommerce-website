@@ -7,10 +7,13 @@ import { store } from "./redux/store.ts";
 import HomePage from "./pages/HomePage/HomePage.tsx";
 import { Navigate, RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
-import { useAppSelector } from "./redux/store.ts";
+import Profile from "./pages/Profile/Profile.tsx";
 
 export const router = createBrowserRouter([
-	{ path: "home/*", element: localStorage.token?<HomePage />:<Navigate to={'/'}/>,errorElement:<h1>404</h1>},
+	{ path: "home/*", element: localStorage.token?<HomePage />:<Navigate to={'/'}/>,errorElement:<h1>404</h1>, children:
+[
+	{ path: "profile", element: <Profile/>,errorElement:<h1>404</h1>}
+]},
 	{ path: "", element: <App /> },
 
 ]);

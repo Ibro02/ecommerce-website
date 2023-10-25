@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import api from "../https";
 const port = "44369";
 const LoginService = {
 	login: async (loggedUsername: string, loggedPassword: string) => {
@@ -8,13 +8,13 @@ const LoginService = {
 			password: loggedPassword,
 		};
 
-		const token = await axios.post(
-			`https://localhost:${port}/api/Login`,
+		const token = await api.post(
+			`/Login`,
 			profile
 		);
-		if (token.data.length > 0) {
+
 			window.localStorage.setItem("token", token.data);
-		}
+	
 		return token;
 	},
 };

@@ -31,6 +31,19 @@ export const NavbarRoutes =
 	{name: "Home", path:"/home"},
 	{name: "Categories", path:"/home"/**CategoriesPage */},
 	{name: "Sell", path:"/home"/**NewSalePage */},
-	{name: "Profile", path:"/"/**ProfilePage */} //#-> for now, Profile button is sing out button
+	{name: "Profile", path:"/home/profile"/**ProfilePage */} //#-> for now, Profile button is sing out button
 
+]
+
+export const ProfileProps = 
+[
+	{title: "First name", name:"firstName"},
+	{title: "Last name", name:"lastName"},
+	{title: "Email", name:"email"},
+	{title: "Username", name:"username"},
+	{title: "Password", name:"password"},
+	{title: "Phone number", name:"phone"},
+	{title: "Description", name:"description"},
+	{title: "City", name:"city"},
+	// {title: "Country", name:},
 ]
