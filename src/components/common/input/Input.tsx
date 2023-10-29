@@ -1,6 +1,7 @@
 import  { useEffect, useState } from "react";
 
 function Input({
+	name,
 	type,
 	placeholder,
 	disabled,
@@ -9,6 +10,7 @@ function Input({
 	children,
 	color
 }: {
+	name?: string;
 	type?: string;
 	placeholder: string;
 	disabled: boolean;

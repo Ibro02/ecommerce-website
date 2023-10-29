@@ -68,6 +68,22 @@ const UserService = {
 			alert(error);
 		}
 	},
+	editUser: async (user:object, id:number) =>
+	{
+		const url = `/User/Put/${id}`
+
+		try{
+
+		const data = await api.put(url, user);
+		    alert("Changes are changed successifully!");	
+			console.log(data)
+		}
+		catch(error)
+		{
+			alert(error);
+		}
+		
+	}
 };
 
 export default UserService;

@@ -57,7 +57,9 @@ function SignInForm() {
 	}, [firstName, lastName, email, username, password]);
 
 	const register = async () => {
-        window.localStorage.removeItem("token")
+       window.localStorage.removeItem("token")
+	   //window.localStorage.clear();
+
 		localStorage.setItem("loggedUsername", newUser.current.username);
 		localStorage.setItem("loggedPassword", newUser.current.password);
 
@@ -76,8 +78,8 @@ function SignInForm() {
 						if (newUser.current.password.length > 6)
 							if (newUser.current.password === comfirmedPassword)
 								if (email.length == 2) {
-									UserService.postUser(newUser.current);
 									navigator("/home");
+									UserService.postUser(newUser.current);
 									await UserService.getUser(
 										localStorage.loggedUsername,
 										localStorage.loggedPassword

@@ -44,6 +44,6 @@ export const ProfileProps =
 	{title: "Password", name:"password"},
 	{title: "Phone number", name:"phone"},
 	{title: "Description", name:"description"},
-	{title: "City", name:"city"},
+	{title: "City", name:"cityId"},
 	// {title: "Country", name:},
 ]

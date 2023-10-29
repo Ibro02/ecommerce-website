@@ -27,6 +27,7 @@ function LogInForm() {
 		);
 
 		if (!loggedUser) {
+			console.log("wataaa")
 			navigate("/");
 			alert("Incorrect password or username! Try again!");
 		} else {

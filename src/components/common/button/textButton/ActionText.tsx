@@ -9,8 +9,7 @@ interface IActionText {
 function ActionText({ color, onClick, children }: IActionText) {
 	return (
 		<a
-			//href="#"
-			className={color}
+			className={`${color} cursor-pointer`}
 			onClick={() => {
 				onClick();
 			}}

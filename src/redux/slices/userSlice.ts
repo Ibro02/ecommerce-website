@@ -9,7 +9,7 @@ const initialState =
 {
     user:
     {
-        username: "", password: "", cityId: 1, description: "", email: "", firstName: "", id: null, lastName: "", roleId: 2
+        username: "", password: "", cityId: null, description: "", email: "", firstName: "", id: null, lastName: "", roleId: 2
     }
 }
 
