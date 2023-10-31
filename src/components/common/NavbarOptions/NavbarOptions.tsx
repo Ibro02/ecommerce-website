@@ -9,12 +9,12 @@ export default function NavbarOptions() {
 				if (route.name !== "Profile")
 					return (
 						<li id={`${key}`}>
-							<Link
+							<NavLink
 								to={route.path}
 								className="text-slate-600 hover:text-red-500 transition-all"
 							>
 								{route.name}
-							</Link>
+							</NavLink>
 						</li>
 					);
 				else

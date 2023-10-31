@@ -7,6 +7,7 @@ import Input from "../../components/common/input/Input";
 import { useAppSelector } from "../../redux/store";
 import ActionText from "../../components/common/button/textButton/ActionText";
 import Title from "../../components/common/Title/Title";
+import profileImg from "../../assets/profileImg.svg"
 import UserService from "../../api/services/Users";
 function Profile() {
 	const user = useAppSelector((state) => state.userReducer.user);
@@ -26,21 +27,23 @@ function Profile() {
 	  const updatedObject = { ...myObject };
   
 	  updatedObject[propertyName] = propertyValue;
-  
+      if (updatedObject?.cityId === "")
+	  updatedObject.cityId = null;
 	  setMyObject(updatedObject);
 	};
 
 
 	return (
-		<div>
+
 			<Box>
 				<Container>
+				<img className="m-auto w-1/5" alt="Profile image" src={profileImg}/>
                 <Title>Profile</Title>
 				<form>
-
-					<Container className="grid grid-cols-2 md:grid-cols-4 mt-10">
+					{/* <Container className="grid grid-cols-2 md:grid-cols-4 mt-10"> */}
+<Container className="flex flex-col w-full m-auto items-baseline justify-evenly flex-wrap">
 						{ProfileProps.map((prop, key) => (
-							<>
+							<Container className=" flex w-2/3 justify-between m-auto">
 								<ProfileText>{prop.title}</ProfileText>
 
 								<Input
@@ -53,7 +56,7 @@ function Profile() {
 									>
 									{!isEnabled ? displayInput(prop.name) : null}
 								</Input>
-							</>
+							</Container>
 						))}
 					</Container>
 						</form>
@@ -77,7 +80,7 @@ function Profile() {
 					</Container>
 				</Container>
 			</Box>
-		</div>
+
 	);
 }
 

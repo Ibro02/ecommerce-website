@@ -30,7 +30,7 @@ export const NavbarRoutes =
 [
 	{name: "Home", path:"/home"},
 	{name: "Categories", path:"/home"/**CategoriesPage */},
-	{name: "Sell", path:"/home"/**NewSalePage */},
+	{name: "Sell", path:"/home/new-product"/**NewSalePage */},
 	{name: "Profile", path:"/home/profile"/**ProfilePage */} //#-> for now, Profile button is sing out button
 
 ]

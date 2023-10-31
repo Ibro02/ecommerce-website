@@ -8,11 +8,13 @@ import HomePage from "./pages/HomePage/HomePage.tsx";
 import { Navigate, RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import Profile from "./pages/Profile/Profile.tsx";
+import NewProduct from "./pages/NewProduct/NewProduct.tsx";
 
 export const router = createBrowserRouter([
 	{ path: "home/*", element: localStorage.token?<HomePage />:<Navigate to={'/'}/>,errorElement:<h1>404</h1>, children:
 [
-	{ path: "profile", element: <Profile/>,errorElement:<h1>404</h1>}
+	{ path: "profile", element: <Profile/>,errorElement:<h1>404</h1>},
+	{ path: "new-product", element: <NewProduct/>,errorElement:<h1>404</h1>},
 ]},
 	{ path: "", element: <App /> },
 

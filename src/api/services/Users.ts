@@ -2,17 +2,24 @@ import axios from "axios";
 import LoginService from "./Login";
 import { headers } from "../https";
 import api from "../https";
+
+interface IUserObject {
+	username?: string;
+	password?: string;
+	cityId?: number;
+	description?: string;
+	email?: string;
+	firstName?: string;
+	id?: number | null;
+	lastName?: string;
+}
 const config = {
 	headers: { Authorization: `Bearer ${localStorage.token}` },
 };
 export const port = "44369";
 const UserService = {
 	getUser: async (loggedUsername: string, loggedPassword: string) => {
-		
-		await LoginService.login(
-			loggedUsername,
-			loggedPassword
-		);
+		await LoginService.login(loggedUsername, loggedPassword);
 		//@todo - make this auth like in zendev's project
 		const users = await api.get(`/User`);
 		let id;
@@ -24,16 +31,11 @@ const UserService = {
 			}
 		}
 		localStorage.setItem("userId", id);
-		const data = api.get(
-			`/User/Get/${localStorage.userId}`
-		);
+		const data = api.get(`/User/Get/${localStorage.userId}`);
 		return data;
 	},
 	getUserWithToken: async () => {
-		const data = api.get(
-			`/User/Get/${localStorage.userId}`
-			
-		);
+		const data = api.get(`/User/Get/${localStorage.userId}`);
 		return data;
 	},
 	getAllUsers: async () => {
@@ -48,10 +50,10 @@ const UserService = {
 		try {
 			const { data } = await api.post(url, newUser);
 			// //console.log(data)
-			await UserService.getUser(data.username,data.password);
-			localStorage.setItem("loggedUsername", data.username)
-			localStorage.setItem("loggedPassword", data.password)
-			localStorage.setItem("userId", data.id)
+			await UserService.getUser(data.username, data.password);
+			localStorage.setItem("loggedUsername", data.username);
+			localStorage.setItem("loggedPassword", data.password);
+			localStorage.setItem("userId", data.id);
 			return data;
 		} catch (error) {
 			alert(error);
@@ -68,22 +70,25 @@ const UserService = {
 			alert(error);
 		}
 	},
-	editUser: async (user:object, id:number) =>
-	{
-		const url = `/User/Put/${id}`
+	editUser: async (user: IUserObject, id: number) => {
+		const url = `/User/Put/${id}`;
 
-		try{
-
-		const data = await api.put(url, user);
-		    alert("Changes are changed successifully!");	
-			console.log(data)
-		}
-		catch(error)
-		{
+		try {
+			const data = await api.put(url, user);
+			alert("Changes are changed successifully!");
+			if (user?.username !== undefined) {
+				localStorage.removeItem("loggedUsername");
+				localStorage.setItem("loggedUsername", data.data.username);
+			}
+			if (user?.password !== undefined) {
+				localStorage.removeItem("loggedPassword");
+				localStorage.setItem("loggedPassword", data.data.password);
+			}
+			console.log(user?.username);
+		} catch (error) {
 			alert(error);
 		}
-		
-	}
+	},
 };
 
 export default UserService;

@@ -28,7 +28,8 @@ function HomePage() {
 		<Fragment>
 			<Navbar />
 			<div className="bg-svg"></div>
-			<Outlet/>
+			<Outlet />
+
 		</Fragment>
 	);
 }

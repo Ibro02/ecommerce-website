@@ -30,10 +30,10 @@ function LogInForm() {
 			console.log("wataaa")
 			navigate("/");
 			alert("Incorrect password or username! Try again!");
-		} else {
+		} 
 			dispatch(getUserInfo(loggedUser.data));
 			navigate("/home");
-		}
+		
 
 		return auth;
 	};
