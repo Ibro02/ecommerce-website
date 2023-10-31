@@ -117,7 +117,6 @@ function SignInForm() {
 
 	return (
 		<div className="md:absolute top-1/2 left-1/2 md:-translate-x-3/4 md:-translate-y-1/2 z-0">
-			{/**@TODO - make animation via js/ts with display: hidden*/}
 			<div
 				className={`${
 					mode

@@ -4,11 +4,11 @@ import { NavbarRoutes } from "../../../constants/Mock";
 export default function NavbarOptions() {
 	const token = localStorage.token;
 	return (
-		<ul className="flex gap-10 my-auto mx-5 text-lg">
+		<ul id={"options"} className="flex gap-10 my-auto mx-5 text-lg">
 			{NavbarRoutes.map((route, key) => {
 				if (route.name !== "Profile")
 					return (
-						<li id={`${key}`}>
+						<li key={key}>
 							<NavLink
 								to={route.path}
 								className="text-slate-600 hover:text-red-500 transition-all"
@@ -19,7 +19,7 @@ export default function NavbarOptions() {
 					);
 				else
 					return (
-						<li id={`${key}`} className="group block">
+						<li key={key} className="group block">
 							<NavLink className="group text-slate-600 hover:text-red-500 transition-all">
 								{route.name}
 								<span className="text-sm">▼</span>

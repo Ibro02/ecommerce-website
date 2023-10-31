@@ -49,7 +49,6 @@ const UserService = {
 		const url = `/User/Post`;
 		try {
 			const { data } = await api.post(url, newUser);
-			// //console.log(data)
 			await UserService.getUser(data.username, data.password);
 			localStorage.setItem("loggedUsername", data.username);
 			localStorage.setItem("loggedPassword", data.password);
