@@ -35,6 +35,13 @@ export const NavbarRoutes =
 
 ]
 
+export interface IInputProps {
+	[key: string]:string;
+    title: string;
+    name: string;
+
+}
+
 export const ProfileProps = 
 [
 	{title: "First name", name:"firstName"},

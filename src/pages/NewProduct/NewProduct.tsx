@@ -1,9 +1,11 @@
 import ProductService from "../../api/services/Products";
 import ImageInput from "../../components/common/ImageInput/ImageInput";
+import Title from "../../components/common/Title/Title";
 function NewProduct() {
 	
 	return (
-		<div>
+		<div className="bg-white w-full h-full">
+			<Title>Sell your product</Title>
 		<ImageInput/>
 		</div>
 	);

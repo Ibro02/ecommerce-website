@@ -9,6 +9,7 @@ import ActionText from "../../components/common/button/textButton/ActionText";
 import Title from "../../components/common/Title/Title";
 import profileImg from "../../assets/profileImg.svg"
 import UserService from "../../api/services/Users";
+import Form from "../../components/groups/Form/Form";
 function Profile() {
 	const user = useAppSelector((state) => state.userReducer.user);
 	const [isEnabled, enableInput] = useState(true);
@@ -39,8 +40,9 @@ function Profile() {
 				<Container>
 				<img className="m-auto w-1/5" alt="Profile image" src={profileImg}/>
                 <Title>Profile</Title>
-				<form>
-					{/* <Container className="grid grid-cols-2 md:grid-cols-4 mt-10"> */}
+				<Form objectProps={ProfileProps} object={user}/>
+				{/* <form>
+					{/* <Container className="grid grid-cols-2 md:grid-cols-4 mt-10"> 
 <Container className="flex flex-col w-full m-auto items-baseline justify-evenly flex-wrap">
 						{ProfileProps.map((prop, key) => (
 							<Container className=" flex w-2/3 justify-between m-auto">
@@ -59,7 +61,7 @@ function Profile() {
 							</Container>
 						))}
 					</Container>
-						</form>
+						</form> */}
 					<Container className="mt-full flex flex-col-reverse mx-10 ">
 						<Container className="flex gap-5">
 							<ActionText
