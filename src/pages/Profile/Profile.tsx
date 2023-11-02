@@ -13,26 +13,7 @@ import Form from "../../components/groups/Form/Form";
 function Profile() {
 	const user = useAppSelector((state) => state.userReducer.user);
 	const [isEnabled, enableInput] = useState(true);
-	const displayInput = (name: string) => {
-		for (const prop in user)
-			if (prop === name)
-			if (user[`${name}`] !== null)
-				if (user[`${name}`].length !== 0) return user[`${name}`];
-
-		return `No ${name}`;
-	};
-
 	const [myObject, setMyObject] = useState<any>({});
-
-	const updateObjectProperty = (propertyName: string, propertyValue: string | number) => {
-	  const updatedObject = { ...myObject };
-  
-	  updatedObject[propertyName] = propertyValue;
-      if (updatedObject?.cityId === "")
-	  updatedObject.cityId = null;
-	  setMyObject(updatedObject);
-	};
-
 
 	return (
 
@@ -40,28 +21,7 @@ function Profile() {
 				<Container>
 				<img className="m-auto w-1/5" alt="Profile image" src={profileImg}/>
                 <Title>Profile</Title>
-				<Form objectProps={ProfileProps} object={user}/>
-				{/* <form>
-					{/* <Container className="grid grid-cols-2 md:grid-cols-4 mt-10"> 
-<Container className="flex flex-col w-full m-auto items-baseline justify-evenly flex-wrap">
-						{ProfileProps.map((prop, key) => (
-							<Container className=" flex w-2/3 justify-between m-auto">
-								<ProfileText>{prop.title}</ProfileText>
-
-								<Input
-								    key={key}
-									name={prop.name}
-									disabled={isEnabled}
-									placeholder={`${isEnabled ? displayInput(prop.name) : ""}`}
-									color="text-slate-800"
-								    getValue={(e:string)=>updateObjectProperty(prop.name,e)}
-									>
-									{!isEnabled ? displayInput(prop.name) : null}
-								</Input>
-							</Container>
-						))}
-					</Container>
-						</form> */}
+				<Form objectProps={ProfileProps} object={user} isEnabled={isEnabled} onChange={(e:string)=>setMyObject(e)}/>
 					<Container className="mt-full flex flex-col-reverse mx-10 ">
 						<Container className="flex gap-5">
 							<ActionText
