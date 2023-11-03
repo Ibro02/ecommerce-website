@@ -45,9 +45,10 @@ export interface IUser {
 }
 
 export interface IInputProps {
-	[key: string]: string;
+	[key: string]: string|undefined;
 	title: string;
 	name: string;
+	type?: string;
 }
 
 export const ProfileProps = [
@@ -66,7 +67,7 @@ export const ProductProps =
 [
 	{ title: "Product name", name: "name" },
 	{ title: "Description", name: "description" },
-	{ title: "Price", name: "price" },
-	{ title: "Category", name: "productCategoryId" },
-	{ title: "Status", name: "statusId" }	
+	{ title: "Price", name: "price", type:"price" },
+	{ title: "Category", name: "productCategoryId",type: "dropdown" },
+	{ title: "Status", name: "statusId" ,type: "dropdown"}	
 ]

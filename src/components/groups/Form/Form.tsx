@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import Container from "../../../utils/containers/Container/Container";
-import { IInputProps, ProfileProps } from "../../../constants/Mock";
+import {
+	IInputProps,
+	ProductProps,
+	ProfileProps,
+} from "../../../constants/Mock";
 import ProfileText from "../../common/ProfileText/ProfileText";
 import Input from "../../common/input/Input";
-
+import Dropdown from "../../common/Dropdown/Dropdown";
+import ProductService from "../../../api/services/Products";
+import { IDropdownList } from "../../common/Dropdown/Dropdown";
 function Form({
 	objectProps,
 	object,
@@ -16,11 +22,24 @@ function Form({
 	isEnabled?: boolean;
 	onChange: Function;
 	type?: string;
+	name?: string;
 }) {
 	const [myObject, setMyObject] = useState<any>({});
+	const [categoryDropdownList, setCategoryDropdownList] = useState<
+		IDropdownList[]
+	>([]);
+	const [statusDropdownList, setStatusDropdownList] = useState<IDropdownList[]>(
+		[]
+	);
+
 	useEffect(() => {
 		onChange(myObject);
 		console.log(myObject);
+		const getCat = async () => {
+			setCategoryDropdownList(await ProductService.getCategories());
+			setStatusDropdownList(await ProductService.getStatuses());
+		};
+		getCat();
 	}, [myObject]);
 
 	const displayInput = (name: string) => {
@@ -49,20 +68,31 @@ function Form({
 						<Container className=" w-1/3 m-auto">
 							<ProfileText>{prop.title}</ProfileText>
 						</Container>
-						<Input
-							key={key}
-							name={prop.name}
-							disabled={isEnabled ?? true}
-							placeholder={`${isEnabled||type==="create" ? displayInput(prop.name) : ""}`}
-							color="text-slate-800"
-							getValue={(e: string) => {
-								 updateObjectProperty(prop.name, e);
-							}}
-						>
-							{type !== "create"&&
-							!isEnabled ? displayInput(prop.name) : ``
-						}
-						</Input>
+						{prop.type === "dropdown" ? (
+							<Dropdown
+								list={
+									prop.name === "productCategoryId"
+										? categoryDropdownList
+										: statusDropdownList
+								}
+								getValue={(e: string) => updateObjectProperty(prop.name, e)}
+							/>
+						) : (
+							<Input
+								key={key}
+								name={prop.name}
+								disabled={isEnabled ?? true}
+								placeholder={`${
+									isEnabled || type === "create" ? displayInput(prop.name) : ""
+								}`}
+								color="text-slate-800"
+								getValue={(e: string) => {
+									updateObjectProperty(prop.name, e);
+								}}
+							>
+								{type !== "create" && !isEnabled ? displayInput(prop.name) : ``}
+							</Input>
+						)}
 					</Container>
 				))}
 			</Container>
