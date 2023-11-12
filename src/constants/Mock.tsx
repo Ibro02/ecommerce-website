@@ -31,6 +31,7 @@ export const NavbarRoutes = [
 	{ name: "Sell", path: "/home/new-product" /**NewSalePage */ },
 	{ name: "Profile", path: "/home/profile" /**ProfilePage */ }, //#-> for now, Profile button is sing out button
 ];
+
 export interface IUser {
 	[key: string]: string|number|null;
 	username: string;

@@ -1,12 +1,8 @@
-import React, { useState, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { changeMode } from "../../../redux/slices/loginmodeslice";
-import { Profiles } from "../../../constants/Mock";
-import UserService from "../../../api/services/Users";
 import ActionText from "./textButton/ActionText";
 import Container from "../../../utils/containers/Container/Container";
-import { Link } from "react-router-dom";
-import LoginService from "../../../api/services/Login";
+
 interface Button {
 	text: string;
 	padding?: string;

@@ -1,7 +1,7 @@
 
 import Container from "../../../utils/containers/Container/Container";
 
-function Hero() {
+function SigningInfo() {
 	return (
 		<Container className="bg-blur-white md:absolute hidden md:block top-0 right-0 h-screen w-1/3 text-gray-100 ml-auto">
 			<Container className="flex-column">
@@ -29,4 +29,4 @@ function Hero() {
 	);
 }
 
-export default Hero;
+export default SigningInfo;

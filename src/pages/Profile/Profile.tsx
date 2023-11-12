@@ -1,9 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Box from "../../components/groups/Box/Box";
-import ProfileText from "../../components/common/ProfileText/ProfileText";
 import { ProfileProps } from "../../constants/Mock";
 import Container from "../../utils/containers/Container/Container";
-import Input from "../../components/common/input/Input";
 import { useAppSelector } from "../../redux/store";
 import ActionText from "../../components/common/button/textButton/ActionText";
 import Title from "../../components/common/Title/Title";

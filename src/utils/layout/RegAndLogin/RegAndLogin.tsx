@@ -2,9 +2,9 @@ import { useState } from "react";
 import SignInForm from "../../../components/groups/signInForm/SignInForm";
 import LoginForm from "../../../components/groups/LoginForm/LoginForm";
 import Container from "../../containers/Container/Container";
-import Hero from "../../../components/groups/signInHero/Hero";
+import SignInHero from "../../../components/groups/signInHero/SignInHero";
+
 function RegAndLogin() {
-	const [logIn, setLogIn] = useState(false);
 
 	return (
 		<Container className="flex">
@@ -13,7 +13,7 @@ function RegAndLogin() {
 				<LoginForm />
 			</Container>
 			<Container className="flex ml-auto">
-				<Hero />
+				<SignInHero />
 			</Container>
 		</Container>
 	);

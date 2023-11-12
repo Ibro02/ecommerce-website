@@ -31,15 +31,17 @@ function Form({
 	const [statusDropdownList, setStatusDropdownList] = useState<IDropdownList[]>(
 		[]
 	);
-
+useEffect(()=>
+{
+	const getCat = async () => {
+		setCategoryDropdownList(await ProductService.getCategories());
+		setStatusDropdownList(await ProductService.getStatuses());
+	};
+	getCat();
+},[])
 	useEffect(() => {
 		onChange(myObject);
-		console.log(myObject);
-		const getCat = async () => {
-			setCategoryDropdownList(await ProductService.getCategories());
-			setStatusDropdownList(await ProductService.getStatuses());
-		};
-		getCat();
+	
 	}, [myObject]);
 
 	const displayInput = (name: string) => {

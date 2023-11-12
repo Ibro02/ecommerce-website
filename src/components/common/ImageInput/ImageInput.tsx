@@ -13,6 +13,7 @@ function ImageInput() {
 	useEffect(() => {
 		if (images.length === 0) dispatch(addImage([]));
 		dispatch(addImage(images));
+		console.log(imagesUrl);
 	}, [images, imagesUrl]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

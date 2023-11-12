@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		fontFamily: {
+			geologica: ["Geologica", "sans-serif"],
+		},
 		extend: {
 			animation: {
 				"fade-slide-down": "fadeSlideDown 0.3s ease-out",

@@ -7,7 +7,7 @@ import NavbarHeader from "../NavbarHeader/NavbarHeader";
 function Navbar() {
 	return (
 		<>
-			<Container className="fixed top-0 right-0 left-0 h-max w-full bg-slate-100 shadow-2xl transition-all duration-200">
+			<Container className="fixed top-0 right-0 left-0 h-max w-full bg-slate-100 shadow-2xl transition-all duration-200 z-40">
 				<NavbarHeader />
 				<Container className="flex h-20 justify-between z-10">
 					<Container className="h-fit w-1/6 my-auto mx-5">
